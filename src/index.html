@@ -12,22 +12,8 @@
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/saigraphicdesings-png/saigraphicdesigns/main/Images/favicon.png">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/saigraphicdesings-png/saigraphicdesigns/main/Images/favicon.png">
 </head>
-<body>
-  <canvas class="webgl" aria-label="Interactive 3D Sai Graphic Designs studio"></canvas>
-  <div class="overlay"></div>
-
-  <div id="cooking">
-    <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-    <div id="area">
-      <div id="sides"><div id="pan"></div><div id="handle"></div></div>
-      <div id="pancake"><div id="pastry"></div><div id="pastry2"></div><div id="pastry3"></div></div>
-    </div>
-    <h1>Preparing Your Design Studio... <span id="progressPercentage"></span>%</h1>
-    <button id="skip3d" type="button">Open Shop Now</button>
-  </div>
-  <button class="start">ENTER</button>
-
-  <div class="shop-shell" id="shopShell">
+<body class="direct-shop">
+<div class="shop-shell is-visible" id="shopShell">
     <header class="shop-nav">
       <a class="shop-brand" href="#" aria-label="Sai Graphic Designs Shop home">
         <span class="shop-brand-mark">SG</span>
@@ -38,16 +24,6 @@
         <button class="cart-pill" id="cartButton" type="button">Cart <span id="cartCount">0</span></button>
       </div>
     </header>
-
-    <section class="shop-intro" aria-labelledby="shopIntroTitle">
-      <span class="eyebrow">WELCOME TO THE CREATIVE VAULT</span>
-      <h2 id="shopIntroTitle">Designs that make<br>brands <em>unforgettable.</em></h2>
-      <p>Explore editable CDR templates inside our immersive 3D studio.</p>
-      <div class="intro-actions">
-        <button class="primary-action" id="browseButton" type="button">Browse Templates</button>
-        <span>Premium + free files</span>
-      </div>
-    </section>
   </div>
 
   <section class="store-panel" id="storePanel" aria-hidden="true" aria-label="Template store">
