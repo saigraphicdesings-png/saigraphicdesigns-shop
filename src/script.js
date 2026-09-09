@@ -2,7 +2,16 @@ import './style.css'
 
 import Experience from './Experience/Experience.js'
 
-const experience = new Experience(document.querySelector('canvas.webgl'))
+let experience
+try {
+  experience = new Experience(document.querySelector('canvas.webgl'))
+} catch (error) {
+  console.warn('3D experience unavailable; opening accessible shop fallback.', error)
+  document.body.classList.add('no-webgl')
+  document.querySelector('.overlay')?.classList.add('fade')
+  document.querySelector('#cooking')?.classList.add('fade')
+  document.querySelector('.start')?.classList.add('fadeOut')
+}
 
 const ASSET_ROOT = 'https://raw.githubusercontent.com/saigraphicdesings-png/saigraphicdesigns/main/'
 const WHATSAPP = '916381128781'
@@ -31,6 +40,13 @@ try {
 
 const $ = selector => document.querySelector(selector)
 const shell = $('#shopShell')
+if (document.body.classList.contains('no-webgl')) {
+  shell.classList.add('is-visible')
+  setTimeout(() => {
+    document.querySelector('#cooking')?.remove()
+    document.querySelector('.start')?.remove()
+  }, 900)
+}
 const store = $('#storePanel')
 const cartPanel = $('#cartPanel')
 const backdrop = $('#panelBackdrop')
