@@ -437,3 +437,7 @@ button,a{font:inherit}
 }
 @media(max-width:460px){.product-grid{grid-template-columns:1fr}.shop-nav-actions{gap:6px}.cart-pill{padding:10px 12px}.intro-actions{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.store-panel,.cart-panel,.shop-shell{transition:none}}
+
+.no-webgl{background:radial-gradient(circle at 72% 28%,#3f164c 0,transparent 32%),radial-gradient(circle at 20% 78%,#063e2c 0,transparent 36%),linear-gradient(135deg,#090611,#171020 55%,#050407)}
+.no-webgl .webgl{display:none}
+.no-webgl .shop-shell{background:radial-gradient(circle at 65% 42%,rgba(255,79,161,.12),transparent 26%),radial-gradient(circle at 76% 72%,rgba(49,229,139,.1),transparent 32%)}
