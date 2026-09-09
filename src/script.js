@@ -1,18 +1,5 @@
 import './style.css'
 
-import Experience from './Experience/Experience.js'
-
-let experience
-try {
-  experience = new Experience(document.querySelector('canvas.webgl'))
-} catch (error) {
-  console.warn('3D experience unavailable; opening accessible shop fallback.', error)
-  document.body.classList.add('no-webgl')
-  document.querySelector('.overlay')?.classList.add('fade')
-  document.querySelector('#cooking')?.classList.add('fade')
-  document.querySelector('.start')?.classList.add('fadeOut')
-}
-
 const ASSET_ROOT = 'https://raw.githubusercontent.com/saigraphicdesings-png/saigraphicdesigns/main/'
 const WHATSAPP = '916381128781'
 const CART_KEY = 'saiGraphicShopCart'
@@ -40,25 +27,7 @@ try {
 
 const $ = selector => document.querySelector(selector)
 const shell = $('#shopShell')
-function openShopFallback() {
-  document.body.classList.add('shop-ready')
-  document.querySelector('.overlay')?.classList.add('fade')
-  document.querySelector('#cooking')?.classList.add('fade')
-  document.querySelector('.start')?.classList.add('fadeOut')
-  shell.classList.add('is-visible')
-  setTimeout(() => {
-    document.querySelector('#cooking')?.remove()
-    document.querySelector('.start')?.remove()
-  }, 900)
-}
-
-if (document.body.classList.contains('no-webgl')) {
-  openShopFallback()
-  setTimeout(() => {
-    document.querySelector('#cooking')?.remove()
-    document.querySelector('.start')?.remove()
-  }, 900)
-}
+shell.classList.add('is-visible')
 const store = $('#storePanel')
 const cartPanel = $('#cartPanel')
 const backdrop = $('#panelBackdrop')
@@ -68,10 +37,10 @@ const cartCount = $('#cartCount')
 const cartTotal = $('#cartTotal')
 
 function setPanel(panel) {
-  store.classList.toggle('open', panel === 'store')
+  store.classList.add('open')
   cartPanel.classList.toggle('open', panel === 'cart')
-  backdrop.classList.toggle('open', Boolean(panel))
-  store.setAttribute('aria-hidden', panel === 'store' ? 'false' : 'true')
+  backdrop.classList.toggle('open', panel === 'cart')
+  store.setAttribute('aria-hidden', 'false')
   cartPanel.setAttribute('aria-hidden', panel === 'cart' ? 'false' : 'true')
 }
 
@@ -139,10 +108,9 @@ document.addEventListener('click', event => {
   }
 })
 
-$('.start').addEventListener('click', () => setTimeout(() => shell.classList.add('is-visible'), 500))
-$('#browseButton').addEventListener('click', () => setPanel('store'))
+$('#browseButton')?.addEventListener('click', () => setPanel('store'))
 $('#cartButton').addEventListener('click', () => setPanel('cart'))
-$('#closeStore').addEventListener('click', () => setPanel(null))
+$('#closeStore')?.addEventListener('click', () => setPanel('store'))
 $('#closeCart').addEventListener('click', () => setPanel(null))
 backdrop.addEventListener('click', () => setPanel(null))
 document.addEventListener('keydown', event => { if (event.key === 'Escape') setPanel(null) })
@@ -162,3 +130,4 @@ $('#checkoutButton').addEventListener('click', () => {
 
 renderProducts()
 renderCart()
+setPanel('store')
