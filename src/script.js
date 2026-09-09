@@ -40,8 +40,20 @@ try {
 
 const $ = selector => document.querySelector(selector)
 const shell = $('#shopShell')
-if (document.body.classList.contains('no-webgl')) {
+function openShopFallback() {
+  document.body.classList.add('shop-ready')
+  document.querySelector('.overlay')?.classList.add('fade')
+  document.querySelector('#cooking')?.classList.add('fade')
+  document.querySelector('.start')?.classList.add('fadeOut')
   shell.classList.add('is-visible')
+  setTimeout(() => {
+    document.querySelector('#cooking')?.remove()
+    document.querySelector('.start')?.remove()
+  }, 900)
+}
+
+if (document.body.classList.contains('no-webgl')) {
+  openShopFallback()
   setTimeout(() => {
     document.querySelector('#cooking')?.remove()
     document.querySelector('.start')?.remove()
