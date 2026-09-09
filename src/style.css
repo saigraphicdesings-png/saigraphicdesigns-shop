@@ -447,3 +447,16 @@ button,a{font:inherit}
 #cooking.fade #skip3d{pointer-events:none}
 .shop-ready{background:radial-gradient(circle at 72% 28%,#3f164c 0,transparent 32%),radial-gradient(circle at 20% 78%,#063e2c 0,transparent 36%),linear-gradient(135deg,#090611,#171020 55%,#050407)}
 @media(max-width:600px){#skip3d{bottom:-9vh;min-width:150px;padding:11px 16px}}
+
+/* Direct storefront: no 3D intro or loading screen */
+.direct-shop{min-height:100vh;overflow:hidden;background:linear-gradient(135deg,#090611,#171020 55%,#050407)}
+.direct-shop .shop-shell{position:fixed;height:86px;opacity:1;background:#090611}
+.direct-shop .shop-nav{background:rgba(9,6,17,.97);border-bottom:1px solid rgba(255,255,255,.12)}
+.direct-shop .store-panel{top:86px;right:0;bottom:0;left:0;width:100%;padding:clamp(20px,3vw,42px) clamp(16px,4vw,64px);border:0;border-radius:0;background:linear-gradient(135deg,#0b0812,#15101d);transform:none}
+.direct-shop .store-panel .icon-button{display:none}
+.direct-shop .product-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1440px}
+.direct-shop .panel-backdrop{z-index:35}
+.direct-shop .cart-panel{z-index:40}
+@media(max-width:1050px){.direct-shop .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.direct-shop .shop-shell{height:70px}.direct-shop .store-panel{top:70px;left:0;width:100%;bottom:0}.direct-shop .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.direct-shop .product-grid{grid-template-columns:1fr}}
